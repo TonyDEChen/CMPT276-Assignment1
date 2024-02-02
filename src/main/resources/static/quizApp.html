@@ -3,9 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Interactive Quiz</title>
+    <link rel="stylesheet" href="/css/quizApp.css">
+    <script src="/js/quizLogic.js" defer></script>
 </head>
 <body>
-    AAAAAAAAAAAAAAAAAARGH
+    <header>
+        Interactive Quiz
+    </header>
+    <main>
+        <section id="question1">
+            1+1= <br>
+            <label for="q1">Answer:</label>
+            <select name="q1" id="q1" size="1">
+                <option value="0" selected></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select> <br>
+
+            <button type="submit" id="sub">submit</button>
+        </section>
+        <!-- <section id="buttons">
+            <button type="submit" id="prev">prev</button>
+            <button type="submit" id="next">next</button> <br>
+            <button type="submit" id="sub">submit</button>
+        </section> -->
+        <section class="results">
+            <p id="result">gruh</p>
+        </section>
+    </main>
+    <footer>
+
+    </footer>
 </body>
 </html>
