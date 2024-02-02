@@ -12,23 +12,55 @@
         Interactive Quiz
     </header>
     <main>
-        <section id="question1">
+        <section class="questions" id="question1">
             1+1= <br>
-            <label for="q1">Answer:</label>
+            <form id="q1">
+                <input type="radio" id="q1a1" name="q1" value="1" />
+                <label for="q1a1">1</label>
+                <br>
+                <input type="radio" id="q1a2" name="q1" value="2" />
+                <label for="q1a2">2</label>
+                <br>
+                <input type="radio" id="q1a3" name="q1" value="3" />
+                <label for="q1a3">3</label>
+                <br>
+                <input type="radio" id="q1a4" name="q1" value="4" />
+                <label for="q1a4">4</label>
+            </form>
+            <!-- <label for="q1">Answer:</label>
             <select name="q1" id="q1" size="1">
                 <option value="0" selected></option>
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
-            </select> <br>
-
-            <button type="submit" id="sub">submit</button>
+                <option value="4">4</option>
+            </select> <br> -->
+            <!-- <div>
+                <input type="radio" id="q1a0" name="q1" value="0" />
+                <label for="q1a1">1</label>
+            </div> -->
         </section>
-        <!-- <section id="buttons">
+        <section class="questions" id="question2">
+            why? <br>
+            <form id="q2">
+                <input type="radio" id="q2a1" name="q2" value="1" />
+                <label for="q2a1">yes</label>
+                <br>
+                <input type="radio" id="q2a2" name="q2" value="2" />
+                <label for="q2a2">no</label>
+                <br>
+                <input type="radio" id="q2a3" name="q2" value="3" />
+                <label for="q2a3">maybe</label>
+                <br>
+                <input type="radio" id="q2a4" name="q2" value="4" />
+                <label for="q2a4">yesn't</label>
+            </form>
+        </section>
+        <section id="buttons">
             <button type="submit" id="prev">prev</button>
             <button type="submit" id="next">next</button> <br>
             <button type="submit" id="sub">submit</button>
-        </section> -->
+        </section>
         <section class="results">
             <p id="result">gruh</p>
         </section>

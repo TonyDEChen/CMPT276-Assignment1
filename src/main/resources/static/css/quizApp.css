@@ -1,4 +1,21 @@
 #result{
-    color:green;
+    color: red;
     display: none;
 }
+
+#buttons{
+    /* position: absolute;
+    top: 150px */
+}
+
+.questions{
+    /* position: absolute; */
+    /* top: 100px;
+    left: 50px; */
+    /* display: none; */
+}
+
+#question2{
+    display: none
+}
+
