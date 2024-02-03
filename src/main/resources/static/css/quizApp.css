@@ -1,5 +1,4 @@
 #result{
-    color: red;
     display: none;
 }
 
@@ -8,18 +7,14 @@
     top: 150px */
 }
 
+#prev{
+    visibility: hidden;
+}
+
 .questions{
-    /* position: absolute; */
-    /* top: 100px;
-    left: 50px; */
-    /* display: none; */
+    display: none;
 }
 
-#question1{
-    display: none
+#question0{
+    display: inline;
 }
-
-#question2{
-    display: none
-}
-

@@ -1,89 +1,42 @@
-// var n = window.prompt("name?", "Bobby")
-// // window.alert("hello " + n)
-// console.log("hello " + n)
-// for(var i = 0; i < 10; i++){
-//     console.log(i)
-// }
-
-// window.addEventListener('keypress', processKey
-// function processKey(evt){
-//     console.log(evt)
-// }
-
-// var button = document.querySelector('input[value="submit"]')
-// button.addEventListener('click', function(evt){
-//     evt.preventDefault()
-//     // document.getElementById('q1').value
-//     var ans1 = document.querySelector("#q1").selectedIndex
-//     console.log(ans1);
-// })
-
-var answers = [];
-var key = [3, 2, 1, 1];
 var currQ = 0;
-var maxQ = 2;
+var numQ = 3;
+var maxQ = numQ-1;
+var answers = new Array(numQ);
+answers.fill(0);
+var key = [3, 2, 1];
 
-// let fn1 = function(evt){
+// let checkAns = function(evt){
 //     evt.preventDefault()
-//     var ans1 = document.querySelector('input[name="q1"]:checked').value
-//     // var ans1 = document.querySelector('input[name="q' + currQ + '"]:checked').value
-//     console.log(ans1)
-
-//     if(ans1 == 0){
-//         document.querySelector("#result").innerHTML = "select an answer"
+//     if(document.querySelectorAll('input[name="q'+currQ+'"]:checked').length === 0){
 //         console.log("no input")
-//         document.getElementById("result").style.display="inline"
 //     }else{
-//         if(ans1 == 2){
-//             console.log("correct")
-//             document.querySelector("#result").innerHTML = "correct"
-//             document.getElementById("result").style.color = "green"
-//         }else{
-//             console.log("incorrect")
-//             document.querySelector("#result").innerHTML = "incorrect"
-//             document.getElementById("result").style.color = "red"
-//         }
-//         document.getElementById("result").style.display="inline"
+//         var ans = document.querySelector('input[name="q'+currQ+'"]:checked').value
+//         console.log(ans)
+//         answers[numQ] = ans;
 //     }
-//     answers.push(ans1);
-//     // document.querySelector("#result").innerHTML = ans1
 // }
 
-let checkAns = function(evt){
+let goNext = function(evt){
     evt.preventDefault()
-
     if(document.querySelectorAll('input[name="q'+currQ+'"]:checked').length === 0){
         alert("Please select an answer.")
         console.log("no input")
     }else{
+        if(currQ < maxQ){
 
-    var ans = document.querySelector('input[name="q'+currQ+'"]:checked').value
-    console.log(ans)
-
-    // if(ans == 0){
-    //     document.querySelector("#result").innerHTML = "please select an answer"
-    //     console.log("no input")
-    //     document.getElementById("result").style.display="inline"
-    // }else{
-        if(ans == key[currQ]){
-            // document.querySelector("#result").innerHTML = "correct"
-            // document.getElementById("result").style.color = "green"
-        }else{
-            // document.querySelector("#result").innerHTML = "incorrect"
-            // document.getElementById("result").style.color = "red"
+            answers[currQ] = document.querySelector('input[name="q'+currQ+'"]:checked').value;
+            document.getElementById("question"+currQ).style.display="none"
+            
+            currQ++
+            document.getElementById("question"+currQ).style.display="inline"
+            
+            if(currQ == 1){
+                document.getElementById("prev").style.visibility="visible"
+            }
+            if(currQ == maxQ){
+                document.getElementById("next").style.visibility="hidden"
+            }
         }
-        // document.getElementById("result").style.display="inline"
-        answers.push(ans)
-    // }
-    }
-}
-
-let goNext = function(evt){
-    evt.preventDefault()
-    if(currQ < maxQ){
-        document.getElementById("question"+currQ).style.display="none"
-        currQ++
-        document.getElementById("question"+currQ).style.display="inline"
     }
 }
 
@@ -93,9 +46,37 @@ let goPrev = function(evt){
         document.getElementById("question"+currQ).style.display="none"
         currQ--
         document.getElementById("question"+currQ).style.display="inline"
+
+        if(currQ == maxQ-1){
+            document.getElementById("next").style.visibility="visible"
+        }
+        if(currQ == 0){
+            document.getElementById("prev").style.visibility="hidden"
+        }
     }
 }
 
-document.querySelector("#sub").addEventListener("click", checkAns)
+let displayResult = function(evt){
+    answers[maxQ] = document.querySelector('input[name="q'+currQ+'"]:checked').value;
+
+    let result = "RESULTS:<br>";
+    for(let i = 0; i < maxQ+1; i++){
+        // console.log(i)
+        result += "question "+(i+1);
+        if(answers[i] == key[i]){
+            result += ": correct<br>"
+        }else{
+            result += ": incorrect<br>"
+        }
+    }
+    document.querySelector("#result").innerHTML = result;
+    // document.querySelector(".questions").style.display="none"
+    // document.querySelector('.questions').setAttribute("style", "display:none")
+    document.getElementById("question"+currQ).style.display="none"
+    document.getElementById("buttons").style.display="none"
+    document.getElementById("result").style.display="inline"
+}
+
+document.querySelector("#sub").addEventListener("click", displayResult)
 document.querySelector("#next").addEventListener("click", goNext)
 document.querySelector("#prev").addEventListener("click", goPrev)
