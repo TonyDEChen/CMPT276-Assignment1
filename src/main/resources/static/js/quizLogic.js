@@ -3,18 +3,7 @@ var numQ = 3;
 var maxQ = numQ-1;
 var answers = new Array(numQ);
 answers.fill(0);
-var key = [3, 2, 1];
-
-// let checkAns = function(evt){
-//     evt.preventDefault()
-//     if(document.querySelectorAll('input[name="q'+currQ+'"]:checked').length === 0){
-//         console.log("no input")
-//     }else{
-//         var ans = document.querySelector('input[name="q'+currQ+'"]:checked').value
-//         console.log(ans)
-//         answers[numQ] = ans;
-//     }
-// }
+var key = [3, 2, 4];
 
 let goNext = function(evt){
     evt.preventDefault()
@@ -23,10 +12,7 @@ let goNext = function(evt){
         console.log("no input")
     }else{
         if(currQ < maxQ){
-
-            answers[currQ] = document.querySelector('input[name="q'+currQ+'"]:checked').value;
-            document.getElementById("question"+currQ).style.display="none"
-            
+            document.getElementById("question"+currQ).style.display="none"            
             currQ++
             document.getElementById("question"+currQ).style.display="inline"
             
@@ -57,23 +43,29 @@ let goPrev = function(evt){
 }
 
 let displayResult = function(evt){
-    answers[maxQ] = document.querySelector('input[name="q'+currQ+'"]:checked').value;
+    for(let i = 0; i < numQ; i++){
+        answers[i] = document.querySelector('input[name="q'+i+'"]:checked').value;
+    }
 
-    let result = "RESULTS:<br>";
+    let score = 0;
+    // let result ="";
     for(let i = 0; i < maxQ+1; i++){
-        // console.log(i)
         result += "question "+(i+1);
         if(answers[i] == key[i]){
-            result += ": correct<br>"
-        }else{
-            result += ": incorrect<br>"
+            score++;
         }
+        document.getElementById("question"+i).style.display="inline"
+        let radButs = document.getElementsByName("q"+i);
+        for(let j = 0; j < radButs.length; j++){
+            radButs[j].disabled = true;
+        }
+        // document.getElementById("q"+i+"a"+key[i]).
+
     }
-    document.querySelector("#result").innerHTML = result;
-    // document.querySelector(".questions").style.display="none"
-    // document.querySelector('.questions').setAttribute("style", "display:none")
-    document.getElementById("question"+currQ).style.display="none"
+
+    // document.getElementById("question"+currQ).style.display="none"
     document.getElementById("buttons").style.display="none"
+    document.querySelector("#result").innerHTML = "Score: "+score+"/"+numQ;
     document.getElementById("result").style.display="inline"
 }
 
