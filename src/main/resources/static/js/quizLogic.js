@@ -4,6 +4,7 @@ var maxQ = numQ-1;
 var answers = new Array(numQ);
 answers.fill(0);
 var key = ["None", 2, "An African or European swallow?"];
+var keyInds = [3, 2, 4];
 
 let goNext = function(evt){
     evt.preventDefault()
@@ -59,7 +60,8 @@ let displayResult = function(evt){
         for(let j = 0; j < radButs.length; j++){
             radButs[j].disabled = true;
         }
-        // document.getElementById("q"+i+"a"+key[i]).
+        console.log("q"+i+"l"+keyInds[i])
+        document.getElementById("q"+i+"l"+keyInds[i]).classList.add("correctAnswer");
 
     }
 

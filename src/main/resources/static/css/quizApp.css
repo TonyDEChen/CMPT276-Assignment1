@@ -79,6 +79,6 @@ form label:hover{
     background: #897be2;
 }
 
-.results{
-    
+.correctAnswer{
+    background: lightgreen !important;
 }
