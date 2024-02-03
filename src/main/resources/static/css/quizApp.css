@@ -32,6 +32,9 @@ main{
 #prev{
     visibility: hidden;
 }
+#sub{
+    visibility: hidden;
+}
 .questions{
     display: none;
 }
