@@ -75,6 +75,7 @@ let displayResult = function(evt){
     document.getElementById("buttons").style.display="none" // disable prev submit next buttons
     document.querySelector("#result").innerHTML = "Score: "+score+"/"+numQ; // display final score
     document.getElementById("result").style.display="inline" 
+    document.querySelector("main").style.top = "50%"
 }
 
 document.querySelector("#sub").addEventListener("click", displayResult) // on submit click
