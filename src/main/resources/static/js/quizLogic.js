@@ -3,8 +3,11 @@ var numQ = 3;
 var maxQ = numQ-1;
 var answers = new Array(numQ);
 answers.fill(0);
-var key = ["None", 2, "An African or European swallow?"];
-var keyInds = [3, 2, 4];
+// var ansInds = new Array(numQ);
+// ansInds.fill(0);
+// var key = ["None", 2, "An African or European swallow?"];
+var key = [3, 2, 4];
+// var keyInds = [3, 2, 4];
 
 let goNext = function(evt){
     evt.preventDefault()
@@ -54,6 +57,9 @@ let displayResult = function(evt){
         result += "question "+(i+1);
         if(answers[i] == key[i]){
             score++;
+        }else{
+            wrongAns = document.querySelector('input[name="q'+i+'"]:checked').value
+            document.getElementById("q"+i+"l"+wrongAns).classList.add("incorrectAnswer");
         }
         document.getElementById("question"+i).style.display="inline"
         let radButs = document.getElementsByName("q"+i);

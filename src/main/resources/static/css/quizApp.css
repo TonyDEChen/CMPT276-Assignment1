@@ -80,5 +80,8 @@ form label:hover{
 }
 
 .correctAnswer{
-    background: lightgreen !important;
+    background: green !important;
+}
+.incorrectAnswer{
+    background: red !important;
 }
