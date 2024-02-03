@@ -3,7 +3,7 @@ var numQ = 3;
 var maxQ = numQ-1;
 var answers = new Array(numQ);
 answers.fill(0);
-var key = [3, 2, 4];
+var key = ["None", 2, "An African or European swallow?"];
 
 let goNext = function(evt){
     evt.preventDefault()
